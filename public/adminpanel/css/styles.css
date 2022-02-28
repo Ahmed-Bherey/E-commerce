@@ -80,6 +80,45 @@
     }
 }
 
+.users {
+    background-color: #e65da1;
+    color: white;
+    height: 20vh;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.products {
+    background-color: #815de6;
+    color: white;
+    height: 20vh;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.category {
+    background-color: #178557;
+    color: white;
+    height: 20vh;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    text-align: center;
+    font-size: 30px;
+}
+
 body {
     margin: 0;
     font-family: var(--bs-body-font-family);

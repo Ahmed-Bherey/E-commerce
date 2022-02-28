@@ -8,22 +8,9 @@
             <li class="breadcrumb-item active">Dashboard</li>
         </ol>
         <div class="row">
-            <div class="col-xl-6">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-chart-area me-1"></i> Area Chart Example
-                    </div>
-                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                </div>
-            </div>
-            <div class="col-xl-6">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-chart-bar me-1"></i> Bar Chart Example
-                    </div>
-                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                </div>
-            </div>
+            <div class="col-12 col-md-6 col-lg-4 users"><i class="fa-solid fa-users"></i> Users ({{$users}})</div>
+            <div class="col-12 col-md-6 col-lg-4 products"><i class="fa-solid fa-cart-shopping"></i> Products ({{$products}})</div>
+            <div class="col-12 col-md-6 col-lg-4 category"><i class="fa-solid fa-table-cells"></i> Categories ({{$category}})</div>
         </div>
     </div>
 </main>

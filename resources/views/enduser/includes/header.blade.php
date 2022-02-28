@@ -53,7 +53,7 @@
                     <h3>Fashion</h3>
                 </a>
                 <ul>
-                    <li><a href="#" class="nav_item active">Home</a></li>
+                    <li><a href="/" class="nav_item active">Home</a></li>
                     <li><a href="#" class="nav_item">Women</a></li>
                     <li><a href="#" class="nav_item">Men</a></li>
                     <li><a href="#" class="nav_item">Footwear</a></li>
