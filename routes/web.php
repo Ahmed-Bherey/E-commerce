@@ -7,6 +7,7 @@ use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\Auth\GoogleSocialiteController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,37 +21,37 @@ use App\Http\Controllers\Auth\GoogleSocialiteController;
 */
 
 
+
+// End User Route
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Cart Route
 Route::get('/' , [ProductController::class , 'showproducts']);
-// Route::get('/', [ProductController::class, 'productList'])->name('products.list');
-Route::get('cart', [CartController::class, 'cartList'])->name('cart.list')->middleware(['auth' , 'isAdmin']);
-Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store')->middleware(['auth' , 'isAdmin']);
+Route::get('cart', [CartController::class, 'cartList'])->name('cart.list')->middleware('auth');
+Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store')->middleware('auth');
 Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.update');
 Route::post('remove', [CartController::class, 'removeCart'])->name('cart.remove');
 Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
+
+// Search Route
 Route::get('/search' , [ProductController::class , 'search']);
 
+// Product Details Page
 Route::resource('show' , DetailsController::class);
+
+// User Profile
 Route::resource('profile' , UserProfileController::class);
+
+// Email Verify & Password Reset
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// Route::get('login/google', [LoginController::class, 'redirectToGoogle']);
-// Route::get('login/google/callback', [LoginController::class, 'handleGoogleCallback']);
-
-// Route::get('login/facebook', [LoginController::class, 'redirectToFacebook'])->name('login.facebook');
-// Route::get('login/facebook/callback', [LoginController::class, 'handleFacebookCallback']);
-
-// Route::get('login/github', [LoginController::class, 'redirectToGithub'])->name('login.github');
-// Route::get('login/github/callback', [LoginController::class, 'handleGithubCallback']);
-
+// Login with Google
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
 Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
 
-
+// Home Route
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $categories = Category::all();
-        return view('admin.categories.all' , compact('categories'));
+        $roles = Role::all();
+        return view('admin.roles.all' , compact('roles'));
     }
 
     /**
@@ -28,7 +28,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        return view('admin.categories.create');
+        return view('admin.roles.create');
     }
 
     /**
@@ -40,12 +40,8 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
-        $catImg = $request->file("catImg");
-        $categoryImage = time()."_".$catImg->getClientOriginalName();
-        $catImg->move('img/category', $categoryImage);
-        Category::create([
-            'category_name'=>$request->cat_name,
-            'image'=>$categoryImage,
+        Role::create([
+            'name'=>$request->role_name,
             'created_by'=>$request->created_by,
         ]);
         return redirect()->back();
@@ -60,9 +56,9 @@ class CategoryController extends Controller
     public function show($id)
     {
         //
-        $categories_products =Category::findOrFail($id)->product;
-        $categories =Category::findOrFail($id);
-        return view('admin.categories.show' , compact('categories' , 'categories_products'));
+        $roles_users =Role::findOrFail($id)->users;
+        $roles =Role::findOrFail($id);
+        return view('admin.roles.show' , compact('roles' , 'roles_users'));
     }
 
     /**
@@ -74,8 +70,8 @@ class CategoryController extends Controller
     public function edit($id)
     {
         //
-        $categories =Category::findOrFail($id);
-        return view('admin.categories.edit' , compact('categories'));
+        $roles = Role::findOrFail($id);
+        return view('admin.roles.edit' , compact('roles'));
     }
 
     /**
@@ -88,9 +84,10 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $categories = Category::findOrFail($id);
-        $categories->update([
-            'category_name' =>$request->category_name,
+        $roles = Role::findOrFail($id);
+        $roles->update([
+            'name' => $request->role_name,
+            'created_by'=>$request->created_by,
         ]);
         return redirect()->back();
     }
@@ -104,13 +101,8 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
-        $categories = Category::findOrFail($id);
-        $categories->delete();
+        $roles = Role::findOrFail($id);
+        $roles->delete();
         return redirect()->back();
-    }
-
-    public function showproducts(){
-        $categories = Category::all();
-        return $categories->categories;
     }
 }

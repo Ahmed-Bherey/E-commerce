@@ -23,6 +23,12 @@
                         <li><a href="#">My Account</a></li>
                         <li><a href="#">Wishlist</a></li>
                         <li><a href="#">Currency:Usd</a></li>
+                        <li>
+                            <a href="{{ route('cart.list') }}" class="flex items-center">
+                                <i class="fa-solid fa-cart-shopping shopping"></i>
+                                {{ Cart::getTotalQuantity()}}
+                             </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -93,12 +99,6 @@
                                 </li>
                             @endguest
                     {{-- <a class="mt-3 hover:underline sm:mx-3 sm:mt-0" href="{{ route('products.list')}}">Shop</a> --}}
-                    <li>
-                        <a href="{{ route('cart.list') }}" class="flex items-center">
-                            <i class="fa-solid fa-cart-shopping shopping"></i>
-                            {{ Cart::getTotalQuantity()}}
-                         </a>
-                    </li>
                     <div class="mobile-btn">
                         <div class="line"></div>
                         <div class="line"></div>
